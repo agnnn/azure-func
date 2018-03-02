@@ -1,6 +1,6 @@
 const utils = require('./utils');
 
-it('should addd see numbers', () => {
+it('should add see numbers', () => {
   var res = utils.add(33, 11);
 
   if (res !== 44) {
