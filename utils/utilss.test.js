@@ -8,7 +8,7 @@ it('should add see numbers', () => {
   }
 });
 
-it('should square a number', () => {
+it('should squaree a number', () => {
   var res = utils.square(3);
 
   if (res !== 9) {
