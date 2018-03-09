@@ -5,6 +5,7 @@
         "servicePlanName":      { "value": "azure-func" },
         "functionAppName":      { "value": "azure-func" },
         "sourceRepo":           { "value": "https://github.com/agnnn/azure-func.git" },
-        "sourceBranch":         { "value": "master" }
+        "sourceBranch":         { "value": "master" },
+        "storageAcctName":      { "value": "azure-func-py-test"}
     }
 }
