@@ -1,0 +1,56 @@
+{
+   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      "servicePlanName": {
+         "defaultValue": "maverick",
+         "type": "string"
+      },
+      "functionAppName": {
+         "defaultValue": "maverick",
+         "type": "string"
+      },
+      "sourceRepo": {
+         "defaultValue": "https://github.com/agnnn/azure-func.git",
+         "type": "string"
+      },
+      "sourceBranch": {
+         "defaultValue": "master",
+         "type": "string"
+      }
+   },
+   "variables": {
+      "storageAcctName": "[concat('functstor', uniquestring(resourceGroup().id))]",
+      "templatelink": "https://raw.githubusercontent.com/agnnn/azure-func/master/AppSettings.json"
+   },
+   "resources": [
+      {
+         "type": "Microsoft.Storage/storageAccounts",
+         "sku": {
+            "name": "Standard_LRS",
+            "tier": "Standard"
+         },
+         "kind": "Storage",
+         "name": "[variables('storageAcctName')]",
+         "apiVersion": "2016-01-01",
+         "location": "Canada Central"
+      },
+      {
+         "type": "Microsoft.Web/serverfarms",
+         "sku": {
+            "name": "S1",
+            "capacity": 1
+         },
+         "kind": "app",
+         "name": "[parameters('servicePlanName')]",
+         "apiVersion": "2015-08-01",
+         "location": "[resourceGroup().location]",
+         "properties": {
+            "name": "[parameters('servicePlanName')]",
+            "numberOfWorkers": 1
+         }
+      },
+
+   ],
+       "outputs": {}
+}
