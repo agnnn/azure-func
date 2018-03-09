@@ -1,3 +1,5 @@
-config/azuredeploy.json  filter=git-crypt diff=git-crypt
-config/AppSettings.json  filter=git-crypt diff=git-crypt
-config/final-deploy.json  filter=git-crypt diff=git-crypt
+azuredeploy.json  filter=git-crypt diff=git-crypt
+AppSettings.json  filter=git-crypt diff=git-crypt
+final-deploy.json  filter=git-crypt diff=git-crypt
+newServicePlan.json  filter=git-crypt diff=git-crypt
+AppSettings.json  filter=git-crypt diff=git-crypt
