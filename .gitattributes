@@ -1,2 +1,2 @@
 # Auto detect text files and perform LF normalization
-config/* filter=git-crypt diff=git-crypt
+config/final-deploy.json filter=git-crypt diff=git-crypt
