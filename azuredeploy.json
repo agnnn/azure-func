@@ -50,7 +50,33 @@
             "numberOfWorkers": 1
          }
       },
+      {
+          "apiVersion": "2015-01-01",
+          "name": "nestedTemplate",
+          "type": "Microsoft.Resources/deployments",
+          "properties": {
+              "mode": "incremental",
+              "templateLink": {
+                  "uri": "[variables('templatelink')]",
+                  "contentVersion": "1.0.0.0"
+              },
+              "parameters": {
+                  "servicePlanName": {
+                      "value": "[parameters('servicePlanName')]"
+                  },
+                  "functionAppName": {
+                      "value": "[parameters('functionAppName')]"
+                  },
+                  "sourceRepo": {
+                      "value": "[parameters('sourceRepo')]"
+                  },
+                  "sourceBranch": {
+                      "value": "[parameters('sourceBranch')]"
+                  },
+                  "storageAcctName": "[variables('storageAcctName')]",
+              }
+          }
+      }
 
-   ],
-       "outputs": {}
+   ]
 }

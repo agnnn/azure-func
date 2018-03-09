@@ -2,8 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "servicePlanName":      { "value": "arm-py-test" },
-        "functionAppName":      { "value": "arm-py-test" },
+        "servicePlanName":      { "value": "azure-func" },
+        "functionAppName":      { "value": "azure-func" },
         "sourceRepo":           { "value": "https://github.com/agnnn/azure-func.git" },
         "sourceBranch":         { "value": "master" }
     }
