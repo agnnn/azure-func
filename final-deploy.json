@@ -20,13 +20,11 @@
         "sourceBranch": {
            "defaultValue": "master",
            "type": "string"
-        },
+        }
     },
     "variables": {
-        "templatelink": "https://raw.githubusercontent.com/agnnn/azure-func/master/newStorageAccount.json",
-        "templatelink1": "https://raw.githubusercontent.com/agnnn/azure-func/master/newServicePlan.json",
-        "templatelink2": "https://raw.githubusercontent.com/agnnn/azure-func/master/AppSettings.json"
-
+        "templateBaseUrl": "https://raw.githubusercontent.com/agnnn/azure-func/master",
+        "templatelink": "[concat(variables('templateBaseUrl'), 'newStorageAccount.json')]"
     },
     "resources": [
         {
@@ -40,55 +38,21 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
+                    "servicePlanName": {
+                        "value": "[parameters('servicePlanName')]"
+                    },
+                    "functionAppName": {
+                        "value": "[parameters('functionAppName')]"
+                    },
+                    "sourceRepo": {
+                        "value": "[parameters('sourceRepo')]"
+                    },
+                    "sourceBranch": {
+                        "value": "[parameters('sourceBranch')]"
+                    },
                     "StorageAccountName": {
                         "value": "[parameters('StorageAccountName')]"
                     }
-                }
-            }
-        },
-        {
-            "apiVersion": "2015-01-01",
-            "name": "Template",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "[variables('templatelink1')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "servicePlanName": {
-                        "value": "[parameters('servicePlanName')]"
-                    }
-                }
-            }
-        },
-        {
-            "apiVersion": "2015-01-01",
-            "name": "Template",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "[variables('templatelink2')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                  "servicePlanName": {
-                      "value": "[parameters('servicePlanName')]"
-                  },
-                  "functionAppName": {
-                      "value": "[parameters('functionAppName')]"
-                  },
-                  "sourceRepo": {
-                      "value": "[parameters('sourceRepo')]"
-                  },
-                  "sourceBranch": {
-                      "value": "[parameters('sourceBranch')]"
-                  },
-                  "StorageAccountName": {
-                      "value": "[parameters('StorageAccountName')]"
-                  }
                 }
             }
         }

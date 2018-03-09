@@ -5,7 +5,7 @@
   "parameters": {
     "servicePlanName": {
       "type": "String"
-    },
+    }
 
   },
   "resources": [
