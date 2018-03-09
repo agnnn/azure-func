@@ -1,2 +1,1 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+finaldeploy.json azuredeploy.json AppSettings.json azuredeploy.paramater.json newServicePlan.json newStorageAccount.json filter=git-crypt diff=git-crypt
