@@ -1,1 +1,1 @@
-IaC/final-deploy.json filter=git-crypt diff=git-crypt
+config/azuredeploy.json filter=git-crypt diff=git-crypt
