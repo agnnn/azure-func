@@ -1,1 +1,1 @@
-config/azuredeploy.json filter=git-crypt diff=git-crypt
+config/* filter=git-crypt diff=git-crypt
