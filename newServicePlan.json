@@ -1,0 +1,28 @@
+
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "servicePlanName": {
+      "type": "String"
+    },
+
+  },
+  "resources": [
+    {
+             "type": "Microsoft.Web/serverfarms",
+             "sku": {
+                "name": "S1",
+                "capacity": 1
+             },
+             "kind": "app",
+             "name": "[parameters('servicePlanName')]",
+             "apiVersion": "2015-08-01",
+             "location": "[resourceGroup().location]",
+             "properties": {
+                "name": "[parameters('servicePlanName')]",
+                "numberOfWorkers": 1
+             }
+          }
+  ]
+}

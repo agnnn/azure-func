@@ -19,25 +19,32 @@
          "type": "string"
       },
       "storageAcctName": {
-                "type": "String",
-                "defaultValue": "azure-func-py-test"
+        "type": "String",
+        "defaultValue": "py-testing-soptarkms",
+      },
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_LRS",
+        "allowedValues": [
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_ZRS"
+        ]
       }
    },
    "variables": {
       "templatelink": "https://raw.githubusercontent.com/agnnn/azure-func/master/AppSettings.json"
    },
    "resources": [
-      {
-         "type": "Microsoft.Storage/storageAccounts",
-         "sku": {
-            "name": "Standard_LRS",
-            "tier": "Standard"
-         },
-         "kind": "Storage",
-         "name": "[parameters('storageAcctName')]",
-         "apiVersion": "2016-01-01",
-         "location": "Canada Central"
-      },
+     {
+       "type": "Microsoft.Storage/storageAccounts",
+       "name": "[parameters('storageAcctName')]",
+       "apiVersion": "2015-06-15",
+       "location": "[resourceGroup().location]",
+       "properties": {
+         "accountType": "[parameters('storageAccountType')]"
+       }
+     },
       {
          "type": "Microsoft.Web/serverfarms",
          "sku": {
@@ -45,6 +52,7 @@
             "capacity": 1
          },
          "kind": "app",
+         "dependsOn": ["[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAcctName'))]"],
          "name": "[parameters('servicePlanName')]",
          "apiVersion": "2015-08-01",
          "location": "[resourceGroup().location]",
@@ -57,6 +65,7 @@
           "apiVersion": "2015-01-01",
           "name": "nestedTemplate",
           "type": "Microsoft.Resources/deployments",
+          "dependsOn": ["[resourceId('Microsoft.Web/serverfarms', parameters('servicePlanName'))]"],
           "properties": {
               "mode": "incremental",
               "templateLink": {
@@ -76,7 +85,10 @@
                   "sourceBranch": {
                       "value": "[parameters('sourceBranch')]"
                   },
-                  "storageAcctName": "[parameters('storageAcctName')]"
+                  "storageAcctName": {
+                      "value": "[parameters('storageAcctName')]"
+                  }
+
               }
           }
       }
