@@ -1,1 +1,2 @@
-finaldeploy.json azuredeploy.json AppSettings.json azuredeploy.paramater.json newServicePlan.json newStorageAccount.json filter=git-crypt diff=git-crypt
+# Auto detect text files and perform LF normalization
+*.json text filter=git-crypt diff=git-crypt
