@@ -6,6 +6,6 @@
         "functionAppName":      { "value": "azure-func" },
         "sourceRepo":           { "value": "https://github.com/agnnn/azure-func.git" },
         "sourceBranch":         { "value": "master" },
-        "storageAcctName":      { "value": "azure-func-py-test"}
+        "storageAcctName":      { "value": "azurefuncpytest"}
     }
 }
